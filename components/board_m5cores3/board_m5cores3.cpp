@@ -2,26 +2,30 @@
 #include "board_m5cores3.h"
 
 namespace esphome {
-namespace board_m5cores3 {
+namespace board_m5atoms3r {
 
-static const char *TAG = "board.m5cores3";
+static const char *TAG = "board.m5atoms3r";
 
-void BoardM5CoreS3::setup() {
+void BoardM5AtomS3R::setup() {
     ESP_LOGI(TAG, "setup");
+    auto cfg = M5.config();
+    cfg.external_speaker.atomic_echo = true;
     M5.begin();
+    
     // M5.Display.fillScreen(TFT_BLUE);
     // M5.Mic.end();
     // M5.Speaker.end();
 }
 
-void BoardM5CoreS3::loop() {
+void BoardM5AtomS3R::loop() {
 
 }
 
-void BoardM5CoreS3::dump_config(){
+void BoardM5AtomS3R::dump_config(){
     ESP_LOGCONFIG(TAG, "config");
 }
 
 
 }  // namespace empty_component
+
 }  // namespace esphome
