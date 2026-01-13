@@ -228,11 +228,16 @@ size_t I2SAudioMicrophone::read(uint8_t *buf, size_t len) {
 }
 
 void I2SAudioMicrophone::read_() {
-  std::vector<int16_t> samples;
-  samples.resize(BUFFER_SIZE);
-  size_t bytes_read = this->read(samples.data(), BUFFER_SIZE / sizeof(int16_t));
-  samples.resize(bytes_read / sizeof(int16_t));
-  this->data_callbacks_.call(samples);
+  //std::vector<int16_t> samples;
+  //samples.resize(BUFFER_SIZE);
+  //size_t bytes_read = this->read(samples.data(), BUFFER_SIZE / sizeof(int16_t));
+  //samples.resize(bytes_read / sizeof(int16_t));
+  //this->data_callbacks_.call(samples);
+  std::vector<uint8_t> bytes;
+  bytes.resize(samples.size() * sizeof(int16_t));
+  memcpy(bytes.data(), samples.data(), bytes.size());
+
+  this->data_callbacks_.call(bytes);
 
 
   // std::vector<int16_t> samples;
