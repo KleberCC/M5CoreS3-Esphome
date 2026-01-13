@@ -65,6 +65,7 @@ BASE_SCHEMA = microphone.MICROPHONE_SCHEMA.extend(
         cv.Optional(CONF_CHANNEL, default="right"): cv.enum(CHANNELS),
         cv.Optional(CONF_BITS_PER_SAMPLE, default="32bit"): cv.All(
             _validate_bits, cv.enum(BITS_PER_SAMPLE)
+        cv.Optional(CONF_MAX_CHANNELS, default=1): cv.int_range(min=1, max=1), 
         ),
     }
 ).extend(cv.COMPONENT_SCHEMA)
