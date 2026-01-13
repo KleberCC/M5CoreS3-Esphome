@@ -23,7 +23,7 @@ class I2SAudioMicrophone : public I2SAudioIn, public microphone::Microphone, pub
   void set_pdm(bool pdm) { this->pdm_ = pdm; }
 
   //size_t read(int16_t *buf, size_t len) override;
-  size_t read(uint8_t *buf, size_t len) override;
+  //size_t read(uint8_t *buf, size_t len) override;
 
 #if SOC_I2S_SUPPORTS_ADC
   void set_adc_channel(adc1_channel_t channel) {
